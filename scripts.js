@@ -192,7 +192,7 @@ if (localStorage.getItem('specialCat') === 'true') {
         // Анимация перехода
         catImg.style.opacity = '0';
         setTimeout(() => {
-            catImg.src = 'images/chmonya-special.jpg';
+            catImg.src = 'chmonya_secret.jpg';
             catImg.style.opacity = '1';
             catImg.classList.add('changed');
         }, 500);
