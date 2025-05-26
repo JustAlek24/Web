@@ -124,6 +124,12 @@ function validateFeedbackForm() {
         document.getElementById('nameError').textContent = 'Имя слишком короткое';
         isValid = false;
     }
+    if (isValid) {
+        // Проверка на особое имя
+        if (name.toLowerCase() === 'чмоня') {
+            localStorage.setItem('specialCat', 'true');
+        }
+    }
 
     // Валидация email
     if (!email) {
