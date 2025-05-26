@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // Активация особого котика
 function activateSpecialCat(catImg) {
     isSpecialCatActive = true;
-    catImg.src = 'images/chmonya-special.jpg';
+    catImg.src = 'images/chmonya_secret.jpg';
     catImg.alt = 'Особенный Чмоня';
     catImg.classList.add('special-cat');
     
@@ -121,10 +121,7 @@ function validateFeedbackForm() {
     if (!message) {
         document.getElementById('messageError').textContent = 'Пожалуйста, введите ваше сообщение';
         isValid = false;
-    } else if (message.length < 10) {
-        document.getElementById('messageError').textContent = 'Сообщение слишком короткое (минимум 10 символов)';
-        isValid = false;
-    }
+    } 
 
     // Если все правильно
     if (isValid) {
