@@ -138,7 +138,10 @@ function validateFeedbackForm() {
     if (!message) {
         document.getElementById('messageError').textContent = 'Пожалуйста, введите ваше сообщение';
         isValid = false;
-    } 
+    } else if (message.length < 0) {
+        document.getElementById('messageError').textContent = 'Сообщение слишком короткое (минимум 10 символов)';
+        isValid = false;
+    }
 
     // Если все правильно
     if (isValid) {
