@@ -124,12 +124,6 @@ function validateFeedbackForm() {
         document.getElementById('nameError').textContent = 'Имя слишком короткое';
         isValid = false;
     }
-    if (isValid) {
-        // Проверка на особое имя
-        if (name.toLowerCase() === 'чмоня') {
-            localStorage.setItem('specialCat', 'true');
-        }
-    }
 
     // Валидация email
     if (!email) {
@@ -143,6 +137,9 @@ function validateFeedbackForm() {
     // Валидация сообщения
     if (!message) {
         document.getElementById('messageError').textContent = 'Пожалуйста, введите ваше сообщение';
+        isValid = false;
+    } else if (message.length < 10) {
+        document.getElementById('messageError').textContent = 'Сообщение слишком короткое (минимум 10 символов)';
         isValid = false;
     }
 
@@ -181,17 +178,4 @@ function initTooltips() {
 // Инициализация tooltip'ов при загрузке страницы
 if (typeof bootstrap !== 'undefined') {
     initTooltips();
-}
-
-if (localStorage.getItem('specialCat') === 'true') {
-    const catImg = document.querySelector('.cat-image');
-    if (catImg) {
-        // Анимация перехода
-        catImg.style.opacity = '0';
-        setTimeout(() => {
-            catImg.src = 'chmonya_secret.jpg';
-            catImg.style.opacity = '1';
-            catImg.classList.add('changed');
-        }, 500);
-    }
 }
