@@ -7,9 +7,6 @@
  * - Обработчики событий
  */
 
-// Глобальная переменная для хранения состояния "особого котика"
-let isSpecialCatActive = false;
-
 document.addEventListener('DOMContentLoaded', function() {
     // =============================================
     // ОБЩИЕ ЭФФЕКТЫ ДЛЯ ВСЕХ СТРАНИЦ
@@ -39,23 +36,26 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // =============================================
+    // ОБРАБОТЧИКИ ДЛЯ ГЛАВНОЙ СТРАНИЦЫ (index.html)
+    // =============================================
+    
+    // Кнопка "Я кнопочка"
+    const mainButton = document.getElementById('mainButton');
+    if (mainButton) {
+        mainButton.addEventListener('click', function() {
+            showLazyMessage('Я такая же ленивая, как и мой создатель');
+        });
+    }
+
+    // =============================================
     // ОБРАБОТЧИКИ ДЛЯ СТРАНИЦЫ С КОТИКОМ (first_page.html)
     // =============================================
     
-    // Проверка и установка особого котика
-    const catImg = document.querySelector('.cat-image');
-    if (catImg && sessionStorage.getItem('specialCat') === 'true') {
-        activateSpecialCat(catImg);
-    }
-
     // Кнопка "Погладить котика"
     const catButton = document.getElementById('catButton');
     if (catButton) {
         catButton.addEventListener('click', function() {
-            const message = isSpecialCatActive ? 
-                'Муррр! Секретный Чмоня доволен!' : 
-                'Мур-мур! Спасибо за поглаживания!';
-            showLazyMessage(message);
+            showLazyMessage('Мур-мур! Спасибо за поглаживания!');
         });
     }
 
@@ -72,17 +72,34 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Активация особого котика
-function activateSpecialCat(catImg) {
-    isSpecialCatActive = true;
-    catImg.src = 'images/chmonya_secret.jpg';
-    catImg.alt = 'Особенный Чмоня';
-    catImg.classList.add('special-cat');
+// =============================================
+// ОБЩИЕ ФУНКЦИИ
+// =============================================
+
+/**
+ * Показывает всплывающее сообщение
+ * @param {string} message - Текст сообщения
+ * @param {number} [duration=3000] - Время показа в миллисекундах
+ */
+function showLazyMessage(message, duration = 3000) {
+    const messageElement = document.getElementById('lazyMessage');
     
-    // Добавляем анимацию
-    catImg.style.transition = 'all 0.5s ease';
-    catImg.style.transform = 'scale(1.05)';
-    catImg.style.boxShadow = '0 0 20px rgba(106, 17, 203, 0.7)';
+    // Если элемент существует
+    if (messageElement) {
+        // Обновляем текст сообщения
+        const textElement = messageElement.querySelector('span');
+        if (textElement) {
+            textElement.textContent = message;
+        }
+        
+        // Показываем сообщение
+        messageElement.classList.add('show');
+        
+        // Скрываем через указанное время
+        setTimeout(() => {
+            messageElement.classList.remove('show');
+        }, duration);
+    }
 }
 
 /**
@@ -107,6 +124,12 @@ function validateFeedbackForm() {
         document.getElementById('nameError').textContent = 'Имя слишком короткое';
         isValid = false;
     }
+    if (isValid) {
+        // Проверка на особое имя
+        if (name.toLowerCase() === 'чмоня') {
+            localStorage.setItem('specialCat', 'true');
+        }
+    }
 
     // Валидация email
     if (!email) {
@@ -121,28 +144,17 @@ function validateFeedbackForm() {
     if (!message) {
         document.getElementById('messageError').textContent = 'Пожалуйста, введите ваше сообщение';
         isValid = false;
-    } 
+    }
 
     // Если все правильно
     if (isValid) {
-        // Проверка на особое имя
-        if (name.toLowerCase() === 'чмоня') {
-            sessionStorage.setItem('specialCat', 'true');
-            
-            // Если мы на странице с котиком, сразу активируем
-            const catImg = document.querySelector('.cat-image');
-            if (catImg) {
-                activateSpecialCat(catImg);
-            }
-        }
-
         // Показываем сообщение об успехе
         document.getElementById('successMessage').innerHTML = `
             <div class="alert alert-success">
                 <h5 class="alert-heading">Спасибо, ${name}!</h5>
-                <p>Ваше сообщение успешно отправлено.</p>
-                ${name.toLowerCase() === 'чмоня' ? 
-                  '<p class="text-warning">Секретный режим активирован!</p>' : ''}
+                <p>Ваше сообщение успешно отправлено. Мы ответим вам на email: <strong>${email}</strong></p>
+                <hr>
+                <p class="mb-0">Ваше сообщение: "${message.substring(0, 50)}${message.length > 50 ? '...' : ''}"</p>
             </div>
         `;
         
