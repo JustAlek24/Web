@@ -73,13 +73,13 @@ document.addEventListener('DOMContentLoaded', function() {
     if (localStorage.getItem('specialCat') === 'true') {
         const catImg = document.querySelector('.cat-image');
         if (catImg) {
-            catImg.src = 'images/chmonya-special.jpg';
-            catImg.alt = 'Особенный Чмоня';
+            catImg.src = 'images/chmonya_secret.jpg';
+            catImg.alt = 'Секретный Чмоня';
             
             // Можно добавить дополнительное сообщение
             const message = document.createElement('p');
             message.className = 'text-muted mt-2';
-            message.textContent = 'Привет, Чмоня! Ты получил особую версию!';
+            message.textContent = 'Окак';
             catImg.parentNode.insertBefore(message, catImg.nextSibling);
             
             // Сбрасываем флаг, чтобы при обновлении страницы было обычное изображение
