@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Вторая страница</title>
-    
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-   
+    <!-- Ваш кастомный CSS (если нужен) -->
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
@@ -18,7 +18,7 @@
     
     <div class="container mt-4">
         <div class="row">
-            
+            <!-- Sidebar -->
             <nav class="col-md-3 col-12 mb-4">
                 <div class="card">
                     <div class="card-body">
@@ -27,7 +27,7 @@
                                 <a class="nav-link" href="index.html">Главная</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" href="firs_page.html">вторая страница</a>
+                                <a class="nav-link active" href="firstPage.html">Вторая страница</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="https://github.com/JustAlek24" target="_blank">GitHub</a>
@@ -37,18 +37,38 @@
                 </div>
             </nav>
             
+            <!-- Main Content -->
             <main class="col-md-9 col-12">
                 <div class="card">
                     <div class="card-body text-center">
-                        <p class="lead">А тут пока котик</p>
-                        <img src="chmonya.jpg" alt="Котик" class="img-fluid rounded" style="max-width: 500px;">
+                        <h2 class="card-title">Котик</h2>
+                        <p class="card-text">А тут пока котик</p>
+                        <img src="Chmonya.jpg" alt="Милый котик" class="img-fluid rounded" style="max-height: 500px;">
+                        
+                        <!-- Добавим такую же кнопку для единообразия -->
+                        <div class="mt-3">
+                            <button id="catButton" class="btn btn-primary">Погладить котика</button>
+                        </div>
                     </div>
                 </div>
             </main>
         </div>
     </div>
 
-   
+    <!-- Bootstrap JS Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Ваш кастомный JS -->
+    <script>
+        const catButton = document.getElementById("catButton");
+        
+        catButton.addEventListener("mouseover", () => {
+            catButton.classList.add("bg-dark");
+        });
+
+        catButton.addEventListener("mouseout", () => {
+            catButton.classList.remove("bg-dark");
+        });
+    </script>
 </body>
 </html>
