@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная | OkAk</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <header class="bg-primary text-white py-4">
+        <div class="container text-center">
+            <h1 class="header-title m-0">OkAk</h1>
+        </div>
+    </header>
+    
+    <div class="container mt-4">
+        <div class="row g-3">
+            <nav class="col-md-3 col-12">
+                <div class="card sidebar-card h-100">
+                    <div class="card-body">
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="index.html">Главная</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="first_page.html">Вторая страница</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="feedback.html">Обратная связь</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://github.com/JustAlek24" target="_blank">GitHub</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            
+            <main class="col-md-9 col-12">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h2 class="card-title">О себе</h2>
+                        <div class="card-text">
+                            <p>Меня зовут Берестнев Алексей Александрович, я студент. Над идеей сайта я думал долго и пришёл к выводу,</p>
+                            <p>что он должен быть максимально полезным для меня в плане опыта его создания, поэтому я решил тут социальную сеть свою создать, чтобы быть как Павел Дуров. (придумать как избежать ареста во Франции)</p>
+                            <p>Если стать популярным и богатым не выйдет, сделаю как Дональд Трамп и моя соцсеть будет моим личным блогом, только с анекдотами. Как по мне одни плюсы.</p>
+                        </div>
+                        <div class="mt-3">
+                            <button id="mainButton" class="btn btn-primary">Я кнопочка</button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <div class="lazy-message" id="lazyMessage">
+        <div class="d-flex align-items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-emoji-smile me-2" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                <path d="M4.285 9.567a.5.5 0 0 1 .683.183A3.498 3.498 0 0 0 8 11.5a3.498 3.498 0 0 0 3.032-1.75.5.5 0 1 1 .866.5A4.498 4.498 0 0 1 8 12.5a4.498 4.498 0 0 1-3.898-2.25.5.5 0 0 1 .183-.683zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5z"/>
+            </svg>
+            <span>Я такая же ленивая, как и мой создатель</span>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="scripts.js"></script>
+</body>
+</html>
